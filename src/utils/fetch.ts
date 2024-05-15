@@ -1,20 +1,18 @@
 import axios from 'axios';
 
 const http = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://simple-be-json-n3rgenos3-fuadmahmuds-projects.vercel.app",
 });
 
 
 import type { AxiosRequestConfig } from 'axios';
 export default function fetch(options: AxiosRequestConfig) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     http(options)
       .then((res: { data: unknown; }) => {
         resolve(res.data);
       })
       .catch((err: { response: { data: any, status: number }; }) => {
-        console.log(err);
-        
         if (typeof err.response.data === 'undefined') {
           resolve(err);
         } else resolve(err.response.data);
